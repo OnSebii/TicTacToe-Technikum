@@ -17,4 +17,4 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: deploy_snapshot
-          path: FH-Technikum/target/**.jar
+          path: TicTacToe-Technikum/target/**.jar
