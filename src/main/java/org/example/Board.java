@@ -12,7 +12,7 @@ public class Board {
 
 
     public boolean isCellEmpty(int x, int y) {
-        return cells[x][y] ==' ';
+        return cells[x][y] =='\u0000';
     }
 
     //checkt ob der gegebene index gültig ist
@@ -35,8 +35,8 @@ public class Board {
                 falls diese leer ist wird ein blankspace gesetzt
                 am ende ein vertikaler trennstrich
              */
-            System.out.print((cells[i][0] == '\u0000') ? ' ' : cells[i][0] +"|");
-            System.out.print((cells[i][1] == '\u0000') ? ' ' : cells[i][1] +"|");
+            System.out.print(((cells[i][0] == '\u0000') ? ' ' : cells[i][0]) +"|");
+            System.out.print(((cells[i][1] == '\u0000') ? ' ' : cells[i][1]) +"|");
             System.out.println((cells[i][2] == '\u0000') ? ' ' : cells[i][2]);
             //sofern es nicht die letzte reihe ist wird ein horizontaler trennstrich gestzt
             if(i<2) {
