@@ -8,7 +8,7 @@ public class Player {
      * Konstruktor für die Klasse Player.
      * Initialisiert den Spieler mit einem gegebenen Marker.
      */
-    Player(char marker){
+    public Player(char marker){
         this.marker = marker;
     }
 
