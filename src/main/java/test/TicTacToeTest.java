@@ -31,7 +31,7 @@ public class TicTacToeTest {
      * nach jedem spielzug wird erneut getestet
      */
     @Test
-    public void TestHasWinnerHorizontal(){
+    public void testHasWinnerHorizontal(){
         assertFalse(game.hasWinner());
 
         game.board.place(0,0, 'X');

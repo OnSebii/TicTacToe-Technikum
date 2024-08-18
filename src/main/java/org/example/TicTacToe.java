@@ -35,7 +35,8 @@ public class TicTacToe {
 
             while (true) {
                 board.print();
-                System.out.println("Current Player: " + currentPlayer.getMarker());  // Zeige den aktuellen Spieler an
+                // Zeige den aktuellen Spieler an
+                System.out.println("Current Player: " + currentPlayer.getMarker());
                 System.out.print("Row (0-2): ");
                 int row = sc.nextInt();  // Lese die Zeile ein
                 System.out.print("Column (0-2): ");
@@ -49,23 +50,26 @@ public class TicTacToe {
 
                 // Überprüfe, ob das gewählte Feld leer ist
                 if (board.isCellEmpty(row, col)) {
-                    board.place(row, col, currentPlayer.getMarker());  // Platziere den Marker des Spielers
+                    // Platziere den Marker des Spielers
+                    board.place(row, col, currentPlayer.getMarker());
                     break;  // Beende die innere Schleife und wechsle den Spieler
                 }
 
-                System.out.println("Field is already taken. Try again!");  // Feld ist bereits besetzt, fordere neue Eingabe
+                // Feld ist bereits besetzt, fordere neue Eingabe
+                System.out.println("Field is already taken. Try again!");
             }
         }
-
         board.print();  // Spielfeld nach Ende des Spiels ausgeben
-        System.out.println("Player " + currentPlayer.getMarker() + " wins!");  // Zeige den Gewinner an
+
+        // Zeige den Gewinner an
+        System.out.println("Player " + currentPlayer.getMarker() + " wins!");
     }
 
 
     public boolean hasWinner() {
-        /**
-         * Überprüft, ob der aktuelle Spieler das Spiel gewonnen hat.
-         * Ein Spieler gewinnt, wenn er drei seiner Marker in einer Reihe, Spalte oder Diagonale hat.
+        /*
+          Überprüft, ob der aktuelle Spieler das Spiel gewonnen hat.
+          Ein Spieler gewinnt, wenn er drei seiner Marker in einer Reihe, Spalte oder Diagonale hat
          */
         char m = currentPlayer.getMarker();
 
