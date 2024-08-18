@@ -15,4 +15,24 @@ public class Board {
         }
     }
 
+
+
+    public boolean isCellEmpty(int x, int y) {
+        return cells[x][y] ==' ';
+    }
+
+    //checkt ob der gegebene index gültig ist
+    public boolean isIndexInRange(int x, int y) {
+        return x < cells.length && x >= 0 && y < cells[x].length && y >= 0;
+    }
+
+    //setzt einen marker aufs feld, sofern dieses noch nicht vergeben ist
+    public void place(int x, int y, char marker) {
+        if (isCellEmpty(x, y)){
+            cells[x][y] = marker;
+        }
+    }
+
+
+
 }
