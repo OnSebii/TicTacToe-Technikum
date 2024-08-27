@@ -63,8 +63,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: v1.0.6 # Update the version number as needed
-          release_name: "Release v1.0.6"
+          tag_name: v1.0.7 # Update the version number as needed
+          release_name: "Release v1.0.7"
           draft: false
           prerelease: false
 
@@ -75,3 +75,5 @@ jobs:
           asset_path: ${{ env.JAR_FILE }}
           asset_name: TicTacToe-Technikum.jar # Adjust the name as needed
           asset_content_type: application/java-archive
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Ensure token is set in env
