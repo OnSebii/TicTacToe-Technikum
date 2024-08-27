@@ -40,11 +40,10 @@ jobs:
       - name: Package the application
         run: mvn package --file pom.xml
 
-      - name: Create directory if it doesn't exist
-        run: mkdir -p target
-
       - name: Verify JAR files
-        run: ls -la target/
+        run: |
+          echo "Listing files in target directory:"
+          ls -la target/
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
@@ -58,8 +57,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: v1.0.4 # Update the version number as needed
-          release_name: "Release v1.0.4"
+          tag_name: v1.0.5 # Update the version number as needed
+          release_name: "Release v1.0.5"
           draft: false
           prerelease: false
 
@@ -67,6 +66,6 @@ jobs:
         uses: actions/upload-release-asset@v1
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: target/*.jar
+          asset_path: target/your-jar-file-name.jar # Replace with the exact filename
           asset_name: TicTacToe-Technikum.jar # Adjust the name as needed
           asset_content_type: application/java-archive
