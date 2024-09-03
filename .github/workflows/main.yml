@@ -51,22 +51,11 @@ jobs:
           JAR_FILE=$(ls target/*.jar)
           echo "JAR_FILE=$JAR_FILE" >> $GITHUB_ENV
 
-      - name: Get latest tag
-        id: get_tag
-        run: |
-          latest_tag=$(git describe --tags --abbrev=0 || echo "v0.0.0")
-          echo "LATEST_TAG=$latest_tag" >> $GITHUB_ENV
-
-      - name: Increment version
-        id: increment_version
-        run: |
-          version=${LATEST_TAG#v}
-          major=$(echo $version | cut -d. -f1)
-          minor=$(echo $version | cut -d. -f2)
-          patch=$(echo $version | cut -d. -f3)
-          new_patch=$((patch + 1))
-          new_version="v${major}.${minor}.${new_patch}"
-          echo "NEW_VERSION=$new_version" >> $GITHUB_ENV
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: deploy_snapshot
+          path: ${{ env.JAR_FILE }}
 
       - name: Create GitHub Release
         id: create_release
@@ -74,8 +63,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ env.NEW_VERSION }}
-          release_name: "Release ${{ env.NEW_VERSION }}"
+          tag_name: v2.1.0 # Update the version number as needed
+          release_name: "Release v2.1.0"
           draft: false
           prerelease: false
 
@@ -87,4 +76,4 @@ jobs:
           asset_name: TicTacToe-Technikum.jar # Adjust the name as needed
           asset_content_type: application/java-archive
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Ensure token is set in env
