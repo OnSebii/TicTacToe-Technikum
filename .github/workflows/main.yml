@@ -76,12 +76,15 @@ jobs:
         run: |
           if git rev-parse "$NEW_VERSION" >/dev/null 2>&1; then
             echo "Tag $NEW_VERSION already exists, skipping release."
-            exit 0
+            echo "SKIP_RELEASE=true" >> $GITHUB_ENV
+          else
+            echo "SKIP_RELEASE=false" >> $GITHUB_ENV
           fi
 
       - name: Create GitHub Release
         id: create_release
         uses: actions/create-release@v1
+        if: env.SKIP_RELEASE == 'false'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
@@ -92,6 +95,7 @@ jobs:
 
       - name: Upload JAR to Release
         uses: actions/upload-release-asset@v1
+        if: env.SKIP_RELEASE == 'false'
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: ${{ env.JAR_FILE }}
@@ -99,3 +103,4 @@ jobs:
           asset_content_type: application/java-archive
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  
