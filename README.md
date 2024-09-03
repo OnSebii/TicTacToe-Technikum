@@ -35,4 +35,23 @@ mvn exec:java -Dexec.mainClass="org.example.Main"
 Tests
 Führen Sie die Tests aus mit:
 mvn test
-![img.png](img.png)
+
+## Github Actions
+
+Nachdem eine Feature Branch in die Main Branch kommt, werden automatisch zwei Jobs ausgeführt. 
+
+Job 1: Das Testen von den User Tests
+![Github Action Testing](images%2FGitHub-Action-1.PNG)
+
+![Test-1.PNG](images%2FTest-1.PNG)
+
+Nach den erfolgreichen Tests, beginnt das Deployment der Software.
+
+![Github Action Deploy](images%2FGitHub-Action-2.PNG)
+
+- Aus dem Code wird ein Jar File erstellt
+- Das Jar File wird nochmals auf Fehler überprüft
+- Der WorkFlow überprüft auf die passende Versionierung
+- Erstellt anschließend ein Release
+
+![Release-Output.PNG](images%2FRelease-Output.PNG)
