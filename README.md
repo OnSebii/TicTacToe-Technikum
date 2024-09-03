@@ -36,6 +36,13 @@ Tests
 Führen Sie die Tests aus mit:
 mvn test
 
+## Software Lifecycle
+1. To-Do: Task wird im Kanban-Board erstellt und priorisiert.
+2. In Progress: Task wird übernommen und bearbeitet. Eine Feature-Branch wird erstellt.
+3. Code Review: Pull-Request wird erstellt und der Code geprüft.
+4. Testing: Task wird getestet, um sicherzustellen, dass alles korrekt funktioniert.
+5. Done: Task ist abgeschlossen und in den Hauptzweig integriert.
+
 ## Github Actions
 
 Nachdem eine Feature Branch in die Main Branch kommt, werden automatisch zwei Jobs ausgeführt. 
