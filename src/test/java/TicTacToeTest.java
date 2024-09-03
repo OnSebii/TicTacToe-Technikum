@@ -82,8 +82,4 @@ public class TicTacToeTest {
         assertFalse(game.hasWinner());
     }
 
-    @Test
-    public void testMavenFalse() {
-        assert(false);
-    }
 }
