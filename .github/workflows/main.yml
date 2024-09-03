@@ -51,6 +51,9 @@ jobs:
           JAR_FILE=$(ls target/*.jar)
           echo "JAR_FILE=$JAR_FILE" >> $GITHUB_ENV
 
+      - name: Fetch all tags
+        run: git fetch --tags
+
       - name: Get latest tag
         id: get_tag
         run: |
